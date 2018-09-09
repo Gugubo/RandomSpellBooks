@@ -18,7 +18,7 @@ public class Buch {
 	int[][]			cover				= new int[coverHeight][coverWidth];
 	static double	foregroundChance	= 0.5;
 	static double	bookmarkChance		= 0.3;
-	static double mirrorChance = 0.7;
+	static double	mirrorChance		= 0.7;
 
 	public Buch() {
 		randomCover();
@@ -26,22 +26,22 @@ public class Buch {
 		randomBookmark();
 		randomColors();
 	}
-	
+
 	public void randomColors() {
 		background = randomColor();
 		do {
-		foreground = randomColor();
-		} while (similarColor(background,foreground));
+			foreground = randomColor();
+		} while (similarColor(background, foreground));
 	}
-	
-	//Checks if two colors are similar
+
+	// Checks if two colors are similar
 	public boolean similarColor(Color a, Color b) {
-	    double distance = Math.pow(a.getRed()-b.getRed(),2)+Math.pow(a.getGreen()-b.getGreen(),2)+Math.pow(a.getBlue()-b.getBlue(),2);
-	    System.out.println(distance);
+		double distance = Math.pow(a.getRed()-b.getRed(), 2)+Math.pow(a.getGreen()-b.getGreen(), 2)+Math.pow(a.getBlue()-b.getBlue(), 2);
+		System.out.println(distance);
 		return distance<5000;
 	}
 
-	//Creates random array with 0s and 1s
+	// Creates random array with 0s and 1s
 	public void randomCover() {
 		for (int i = 0; i<cover.length; i++) {
 			for (int j = 0; j<cover[i].length; j++) {
@@ -49,25 +49,26 @@ public class Buch {
 			}
 		}
 	}
-	
+
 	public void randomMirror() {
 		if (Math.random()<mirrorChance)
-		mirrorVertically();
+			mirrorVertically();
 		if (Math.random()<mirrorChance)
-		mirrorHorizontally();
+			mirrorHorizontally();
 	}
-	
+
 	public void mirrorVertically() {
-		for (int i = 0; i<cover.length;i++) {
-			for (int j = 0; j<cover[i].length/2;j++) {
-				cover[i][j]=cover[i][cover[i].length-1-j];
+		for (int i = 0; i<cover.length; i++) {
+			for (int j = 0; j<cover[i].length/2; j++) {
+				cover[i][j] = cover[i][cover[i].length-1-j];
 			}
 		}
 	}
+
 	public void mirrorHorizontally() {
-		for (int i = 0; i<cover.length/2;i++) {
-			for (int j = 0; j<cover[i].length;j++) {
-				cover[i][j]=cover[cover.length-1-i][j];
+		for (int i = 0; i<cover.length/2; i++) {
+			for (int j = 0; j<cover[i].length; j++) {
+				cover[i][j] = cover[cover.length-1-i][j];
 			}
 		}
 	}
@@ -78,9 +79,9 @@ public class Buch {
 			bookmarkColor = randomColor();
 		}
 	}
-	
+
 	public Color randomColor() {
-		return new Color((int)(Math.random() * 0x1000000));
+		return new Color((int) (Math.random()*0x1000000));
 	}
 
 	public BufferedImage getImage() {
