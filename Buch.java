@@ -4,18 +4,18 @@ import java.awt.image.BufferedImage;
 
 public class Buch {
 
-	static int		coverWidth			= 5;
-	static int		coverHeight			= 7;
+	static int	coverWidth	= 5;
+	static int	coverHeight	= 7;
 
-	static int		width				= coverWidth+3;
-	static int		height				= coverHeight+6;
+	static int	width	= coverWidth+3;
+	static int	height	= coverHeight+6;
 
-	static Color	pageColor			= new Color(226, 207, 167);
-	Color			background, foreground, bookmarkColor;
+	static Color	pageColor	= new Color(226, 207, 167);
+	Color	background, foreground, bookmarkColor;
 
-	boolean			bookmark;
+	boolean	bookmark;
 
-	int[][]			cover				= new int[coverHeight][coverWidth];
+	int[][]	cover	= new int[coverHeight][coverWidth];
 	static double	foregroundChance	= 0.5;
 	static double	bookmarkChance		= 0.3;
 	static double	mirrorChance		= 0.7;
@@ -88,7 +88,7 @@ public class Buch {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics g = image.getGraphics();
 
-		// Rücken
+		// RÃ¼cken
 		g.setColor(background.darker().darker());
 		g.drawLine(0, 1, 0, coverHeight+3);
 
